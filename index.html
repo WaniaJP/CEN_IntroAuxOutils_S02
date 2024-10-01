@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les jeux créés en France en 2003</title>
+
+</head>
+<body>
+    <h1>Les jeux créés en france en 2003</h1>
+<iframe style="width: 100%; height: 80vh; border: none;" src="https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3Fgame%20%3FgameLabel%20(MIN(%3Fpublication_date)%20AS%20%3Fpublication)%20%0A%20%20(GROUP_CONCAT(DISTINCT%20%3Fgenre_label%3B%20SEPARATOR%20%3D%20%22%2C%20%22)%20AS%20%3Fgenres)%20%0A%20%20(GROUP_CONCAT(DISTINCT%20%3Fcharacter_label%3B%20SEPARATOR%20%3D%20%22%2C%20%22)%20AS%20%3Fcharacters)%20%0A%20%20%3FgameDescription%20(MAX(%3Freview_score)%20AS%20%3FreviewScore)%20%3Fimage%20%3FyoutubeLink%20%0AWHERE%20%7B%0A%20%20%3Fgame%20wdt%3AP31%20wd%3AQ7889%3B%0A%20%20%20%20wdt%3AP495%20wd%3AQ142.%0A%20%20%0A%20%20%23%20Date%20de%20publication%0A%20%20OPTIONAL%20%7B%20%3Fgame%20wdt%3AP577%20%3Fpublication_date.%20%7D%0A%0A%20%20%23%20Filtrer%20les%20jeux%20publi%C3%A9s%20en%202003%0A%20%20FILTER(YEAR(%3Fpublication_date)%20%3D%202003)%0A%0A%20%20%23%20Genres%20associ%C3%A9s%20au%20jeu%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fgame%20wdt%3AP136%20%3Fgenre.%0A%20%20%20%20%3Fgenre%20rdfs%3Alabel%20%3Fgenre_label.%0A%20%20%20%20FILTER(LANG(%3Fgenre_label)%20%3D%20%22en%22)%0A%20%20%7D%0A%0A%20%20%23%20Personnages%20associ%C3%A9s%20au%20jeu%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fgame%20wdt%3AP674%20%3Fcharacter.%0A%20%20%20%20%3Fcharacter%20rdfs%3Alabel%20%3Fcharacter_label.%0A%20%20%20%20FILTER(LANG(%3Fcharacter_label)%20%3D%20%22en%22)%0A%20%20%7D%0A%0A%20%20%23%20Description%20du%20jeu%0A%20%20OPTIONAL%20%7B%20%3Fgame%20wdt%3AP1476%20%3FgameDescription.%20%7D%0A%0A%20%20%23%20Score%20de%20reviews%20du%20jeu%0A%20%20OPTIONAL%20%7B%20%3Fgame%20wdt%3AP444%20%3Freview_score.%20%7D%0A%0A%20%20%23%20Image%20du%20jeu%0A%20%20OPTIONAL%20%7B%20%3Fgame%20wdt%3AP18%20%3Fimage.%20%7D%0A%0A%20%20%23%20Lien%20YouTube%0A%20%20OPTIONAL%20%7B%0A%20%20%20%20%3Fgame%20wdt%3AP1651%20%3Fyoutube_id.%0A%20%20%20%20BIND(URI(CONCAT(%22https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D%22%2C%20STR(%3Fyoutube_id)))%20AS%20%3FyoutubeLink)%0A%20%20%7D%0A%0A%20%20%23%20Service%20label%20pour%20obtenir%20des%20labels%20lisibles%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%22.%20%7D%0A%7D%0AGROUP%20BY%20%3Fgame%20%3FgameLabel%20%3FgameDescription%20%3Fimage%20%3FyoutubeLink%0AORDER%20BY%20DESC(%3Fpublication)%0A" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+</body>
+</html>
